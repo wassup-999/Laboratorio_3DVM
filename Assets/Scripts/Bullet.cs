@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    public float BulletForce = 2f;
-    public Rigidbody rb;
-   
+    public float BulletForce = 10f;  
+    public Rigidbody rb;    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
         
     }
 
@@ -18,9 +17,14 @@ public class Bullet : MonoBehaviour
         BulletImpulse();
     }
     public void BulletImpulse()
-    {
-        Vector3 BulletDistance = (Vector3.up * BulletForce * transform.position.y).normalized;
-
-        rb.AddForce(BulletDistance * this.BulletForce , ForceMode.Impulse);
+    {     
+        Vector3 BulletDistance = transform.up * BulletForce * Time.deltaTime;
+        rb.AddForce(BulletDistance * BulletForce , ForceMode.Impulse);
+        BulletForce -= 2 * Time.deltaTime ; 
+        if(BulletForce <= 0)
+        {
+            BulletForce = 0;           
+        }
     }
+    
 }
