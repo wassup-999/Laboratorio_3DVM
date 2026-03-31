@@ -19,8 +19,8 @@ public class Bullet : MonoBehaviour
     }
     public void BulletImpulse()
     {
-        Vector3 BulletForce = (transform.up * this.BulletForce * transform.position.y).normalized;
+        Vector3 BulletDistance = (Vector3.up * BulletForce * transform.position.y).normalized;
 
-        rb.AddForce(BulletForce * this.BulletForce , ForceMode.Impulse);
+        rb.AddForce(BulletDistance * this.BulletForce , ForceMode.Impulse);
     }
 }
