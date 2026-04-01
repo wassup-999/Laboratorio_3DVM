@@ -151,4 +151,4 @@ MonoBehaviour:
   Range: 2
   VerifyArea: 0
   Player: {fileID: 0}
-  speed: 4
+  speed: 3

@@ -4402,8 +4402,8 @@ GameObject:
   - component: {fileID: 1687057305}
   - component: {fileID: 1687057304}
   - component: {fileID: 1687057303}
-  - component: {fileID: 1687057302}
   - component: {fileID: 1687057307}
+  - component: {fileID: 1687057308}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4411,23 +4411,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1687057302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687057301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a1c12711c9ff34589d4817b8a976ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveInputs: {x: 0, y: 0}
-  moveSpeed: 5
-  rotationSpeed: 200
-  gravity: -9.8
-  verticalVelocity: 0
 --- !u!136 &1687057303
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4550,6 +4533,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1687057308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687057301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a1c12711c9ff34589d4817b8a976ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  moveInputs: {x: 0, y: 0}
+  moveSpeed: 5
+  rotationSpeed: 200
+  gravity: -9.8
+  verticalVelocity: 0
+  isDashing: 0
+  dashForce: 0
+  dashDuration: 0
+  dashTimer: 0
+  DashCooldown: 0
 --- !u!43 &1791482221
 Mesh:
   m_ObjectHideFlags: 0
