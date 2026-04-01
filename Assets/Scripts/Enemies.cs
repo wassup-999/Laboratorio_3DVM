@@ -41,9 +41,11 @@ public class Enemies : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,Range);
+        Gizmos.color = Color.green;
         if (VerifyArea)
         {
             Gizmos.DrawLine(transform.position, Player.transform.position);
+            
         }
     }
     public void FollowPlayer()
