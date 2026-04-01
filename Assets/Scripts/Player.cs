@@ -92,6 +92,12 @@ public class Player : MonoBehaviour
     {
         moveInputs.y *= 2; // Double the forward movement speed when sprinting       
     }
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 2);
+
+    }
 }
 
 
