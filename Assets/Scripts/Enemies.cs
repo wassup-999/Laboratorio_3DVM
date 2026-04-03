@@ -15,7 +15,7 @@ public class Enemies : MonoBehaviour
     
     void Update()
     {
-        FollowPlayer();
+        //FollowPlayer();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,8 +23,9 @@ public class Enemies : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             VerifyArea = true;
-            Player = other.gameObject.transform;
+            Player = other.gameObject.transform;         
             Debug.Log("Detected");
+            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -33,7 +34,15 @@ public class Enemies : MonoBehaviour
         {
             VerifyArea= false;
             Player = null;
-            Debug.Log("Detected");
+            Debug.Log(" Not Detected");
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("collision");
+            Destroy(gameObject);
         }
     }
 
@@ -45,15 +54,16 @@ public class Enemies : MonoBehaviour
         if (VerifyArea)
         {
             Gizmos.DrawLine(transform.position, Player.transform.position);
-            
-        }
+            Vector3 dir = (Player.transform.position - transform.position).normalized;
+            transform.position += dir * speed * Time.deltaTime;
+        }        
     }
     public void FollowPlayer()
     {
-        if (VerifyArea)
+        /* (VerifyArea)
         {
             Vector3 dir = (Player.transform.position - transform.position).normalized;
             transform.position += dir * speed * Time.deltaTime;
-        }
-    }
+        }*/
+    }    
 }
