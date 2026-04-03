@@ -26,5 +26,10 @@ public class Bullet : MonoBehaviour
             BulletForce = 0;           
         }
     }
-    
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.up * BulletForce);
+    }
+
 }
