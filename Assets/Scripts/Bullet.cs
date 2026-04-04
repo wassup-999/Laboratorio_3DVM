@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Bullet : MonoBehaviour
 {
     public float BulletForce = 10f;  
     public Rigidbody rb;    
+    
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         Destroy(gameObject, 4f);
         
