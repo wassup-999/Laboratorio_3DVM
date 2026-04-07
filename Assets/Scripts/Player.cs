@@ -1,4 +1,4 @@
-using System;
+ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +34,11 @@ public class Player : MonoBehaviour
 
         inputs.Player.Sprint.performed += OnSprint;
         inputs.Player.Dash.performed += OnDash;
+
+
+        inputs.Player.Attack.performed += OnAttack;
+
+       
     }
 
     
@@ -98,6 +103,8 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 2);
 
     }
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        Debug.Log("Attack");
+    }
 }
-
-

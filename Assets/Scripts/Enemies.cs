@@ -4,18 +4,27 @@ public class Enemies : MonoBehaviour
 {
     public int Range = 10;
     public bool VerifyArea = false;
-    public Transform Player;
+    public GameObject Player;
     public float speed = 1f;
+    public ThirdPersonController playerTC;
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<SphereCollider>().radius = Range;
-        GetComponent<Player>();
+        playerTC = Player.GetComponent<ThirdPersonController>();
+
+      
     }
 
     
     void Update()
-    {
-        //FollowPlayer();
+    {        
+        if(VerifyArea == true && Vector3.Distance(Player.transform.position, transform.position)<1f )
+        {
+            Debug.Log("collision");
+            Destroy(gameObject);
+            playerTC.RecieveDamage(1);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +32,7 @@ public class Enemies : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             VerifyArea = true;
-            Player = other.gameObject.transform;         
+            Player = other.gameObject;         
             Debug.Log("Detected");
             
         }
@@ -37,15 +46,7 @@ public class Enemies : MonoBehaviour
             Debug.Log(" Not Detected");
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("collision");
-            Destroy(gameObject);
-        }
-    }
-
+    
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -58,12 +59,5 @@ public class Enemies : MonoBehaviour
             transform.position += dir * speed * Time.deltaTime;
         }        
     }
-    public void FollowPlayer()
-    {
-        /* (VerifyArea)
-        {
-            Vector3 dir = (Player.transform.position - transform.position).normalized;
-            transform.position += dir * speed * Time.deltaTime;
-        }*/
-    }    
+    
 }
